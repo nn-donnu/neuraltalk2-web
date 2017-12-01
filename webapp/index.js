@@ -11,6 +11,8 @@ var uuid = require('uuid');
 var multer  = require('multer');
 var upload = multer({ dest: '/tmp' });
 
+var translate = require('google-translate-api');
+
 
 //this object will map the images SHA256 sums with their captions
 var sha256Captions = new NodeCache({stdTTL: 60*30, checkperiod: 11});
@@ -141,11 +143,18 @@ app.get('/caption/:sha256sum',function(req,res){
     res.status(400).json({error:"expecting a sha256 digest, it should be 64 characters long"});
   }
   if(value){
-    res.json({caption:value});
-    return;
-  }
+      translate(value, {from: 'en', to: 'ru'}).then(result => {
+          res.json({caption: result.text});
 
-  res.status(404).json({error:"caption not found, it is expired or yet to be processed"});
+      }).catch(err => {
+          res.status(404).json({error:err});
+      });
+
+    //res.json({caption:value});
+
+  } else {
+      res.status(404).json({error:"caption not found, it is expired or yet to be processed"});
+  }
 });
 
 app.post('/addURL',function(req,http_res){
