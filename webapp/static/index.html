@@ -2,6 +2,15 @@
   <head>
     <meta charset=utf-8>
     <title>naturalnode2 web</title>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
     <script src="dropzone.js"></script>
     <script>
 //show the server status
@@ -52,17 +61,54 @@ window.onload = function() {
     </script>
   </head>
   <body>
-    <h1>Hey!</h1>
-    <p>Load an image here!!!</p>
 
-    <form action="/upload"
-          class="dropzone"
-          id="image-upload-dropzone"></form>
-    
-    <strong>caption result:</strong>
+  <header>
+    <nav>
+      <div class="container nav-wrapper">
+        <a href="#" class="brand-logo left">
+          <img src="img/logo-donnu.png" height="65" width="65" alt="">
+        </a>
+        <a href="#" class="brand-logo center">NEURALTALK2 DONNU</a>
+        <a href="#" class="brand-logo right">
+          <img src="img/logo-fmit.png" height="70" width="70" alt="">
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="row"></div>
+  <div class="row"></div>
+
+  <div class="container">
+    <form action="/upload" class="dropzone" id="image-upload-dropzone"></form>
+  </div>
+  </div>
+
+
+
+  <div class="container">
+    <hr>
+    <br>
+  </div>
+
+  <div class="container">
+    <strong>Caption result:</strong>
     <p id="captionstatus"></p>
-    <strong>server status</strong>
-    <p id="serverstatus"></p>
+    <!--<strong>server status</strong>-->
+    <!-- <p id="serverstatus"></p>-->
+  </div>
+
+
+  <br>
+
+    <footer class="page-footer foot">
+      <div class="container">
+        <div class="row">
+          <p id="serverstatus"></p>
+        </div>
+      </div>
+    </footer>
+  
   </body>
 </html>
 
